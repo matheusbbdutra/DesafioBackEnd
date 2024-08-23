@@ -17,7 +17,21 @@ Para executar algum comando no container, basta rodar o comando abaixo:
 ```bash
 docker compose exec app /bin/bash
 ```
-E você terar acesso ao terminal do container onde está o projeto PHP.
+E você terar acesso ao terminal do container onde está o projeto PHP. Agora você pode prosseguir para configuração do projeto e instalação de dependências.
+
+## Configuração do Projeto
+
+Após clonar o repositório, copie o arquivo `.env.example` para `.env` e preencha os valores necessários:
+
+```bash
+cp .env.example .env
+```
+
+Após configurar o arquivo `.env`, execute o seguinte comando para instalar as dependências do projeto:
+
+```bash
+composer install
+```
 
 ## RabbitMQ
 
