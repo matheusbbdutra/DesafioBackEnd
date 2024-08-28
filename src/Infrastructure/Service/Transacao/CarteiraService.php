@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Transacao\Services;
+namespace App\Infrastructure\Service\Transacao;
 
 use App\Domain\Transacao\Entity\Carteira;
-use App\Domain\Transacao\Repository\CarteiraRepository;
 use App\Domain\Usuario\Entity\Usuario;
+use App\Infrastructure\Repository\Transacao\CarteiraRepository;
 
 class CarteiraService
 {

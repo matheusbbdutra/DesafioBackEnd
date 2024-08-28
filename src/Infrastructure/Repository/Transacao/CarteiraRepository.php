@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Transacao\Repository;
+namespace App\Infrastructure\Repository\Transacao;
 
 use App\Domain\Transacao\Entity\Carteira;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -30,7 +30,7 @@ class CarteiraRepository extends ServiceEntityRepository
         } catch (\Exception $e) {
             $entityManager->rollback();
 
-            throw new \RuntimeException('Erro ao criar carteiro do usuário: '.$e->getMessage(), 0, $e);
+            throw new \RuntimeException('Erro ao criar carteiro do usuário: ' . $e->getMessage(), 0, $e);
         }
     }
 }

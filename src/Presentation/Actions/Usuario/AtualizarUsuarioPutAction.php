@@ -4,7 +4,7 @@ namespace App\Presentation\Actions\Usuario;
 
 use App\Application\DTO\Usuario\UsuarioDTO;
 use App\Application\Validators\Validator;
-use App\Domain\Usuario\Services\UsuarioService;
+use App\Infrastructure\Service\Usuario\UsuarioService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

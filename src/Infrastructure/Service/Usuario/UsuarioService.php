@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Usuario\Services;
+namespace App\Infrastructure\Service\Usuario;
 
 use App\Application\DTO\Usuario\UsuarioDTO;
-use App\Domain\Transacao\Services\CarteiraService;
 use App\Domain\Usuario\Entity\Usuario;
-use App\Domain\Usuario\Repository\UsuarioRepository;
 use App\Domain\Usuario\ValueObject\Documento;
 use App\Domain\Usuario\ValueObject\Email;
+use App\Infrastructure\Repository\Usuario\UsuarioRepository;
+use App\Infrastructure\Service\Transacao\CarteiraService;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UsuarioService
@@ -28,7 +28,7 @@ class UsuarioService
         $senha = $this->encoder->hashPassword($usuario, $usuarioDTO->senha);
         $usuario->setSenha($senha);
         $usuario->setIsLogista($usuarioDTO->isLogista ?: false);
-        $this->usuarioRepository->criarUsuario($usuario);
+        $this->usuarioRepository->persisteUsuario($usuario);
         $this->carteiraService->criarCarteira($usuario);
 
         return $usuario;
@@ -45,7 +45,7 @@ class UsuarioService
         $usuario->setSenha($senha);
         $usuario->setIsLogista($usuarioDTO->isLogista ?: false);
 
-        $this->usuarioRepository->atualizarUsuario($usuario);
+        $this->usuarioRepository->persisteUsuario($usuario);
 
         return $usuario;
     }

@@ -3,10 +3,10 @@
 namespace App\Tests\Domain\Usuario;
 
 use App\Application\DTO\Usuario\UsuarioDTO;
-use App\Domain\Transacao\Services\CarteiraService;
 use App\Domain\Usuario\Entity\Usuario;
-use App\Domain\Usuario\Repository\UsuarioRepository;
-use App\Domain\Usuario\Services\UsuarioService;
+use App\Infrastructure\Repository\Usuario\UsuarioRepository;
+use App\Infrastructure\Service\Transacao\CarteiraService;
+use App\Infrastructure\Service\Usuario\UsuarioService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 

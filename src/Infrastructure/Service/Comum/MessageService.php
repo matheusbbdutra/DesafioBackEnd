@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Infrastructure\Service\Comum;
 
 use App\Infrastructure\Messaging\EmailMessage;
 use Symfony\Component\Messenger\MessageBusInterface;
