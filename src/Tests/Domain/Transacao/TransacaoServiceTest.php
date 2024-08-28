@@ -5,11 +5,11 @@ namespace App\Tests\Domain\Transacao;
 use App\Application\DTO\Transacao\TransacaoDTO;
 use App\Domain\Transacao\Entity\Carteira;
 use App\Domain\Transacao\Entity\Transacao;
-use App\Domain\Transacao\Services\TransacaoService;
 use App\Domain\Usuario\Entity\Usuario;
-use App\Domain\Usuario\Repository\UsuarioRepository;
-use App\Infrastructure\Service\ClientService;
-use App\Infrastructure\Service\MessageService;
+use App\Infrastructure\Repository\Usuario\UsuarioRepository;
+use App\Infrastructure\Service\Comum\ClientService;
+use App\Infrastructure\Service\Comum\MessageService;
+use App\Infrastructure\Service\Transacao\TransacaoService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 

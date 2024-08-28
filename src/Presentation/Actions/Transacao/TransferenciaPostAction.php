@@ -4,7 +4,7 @@ namespace App\Presentation\Actions\Transacao;
 
 use App\Application\DTO\Transacao\TransacaoDTO;
 use App\Application\Validators\Validator;
-use App\Domain\Transacao\Services\TransacaoService;
+use App\Infrastructure\Service\Transacao\TransacaoService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

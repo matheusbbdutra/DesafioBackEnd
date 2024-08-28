@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Usuario\Repository;
+namespace App\Infrastructure\Repository\Usuario;
 
 use App\Domain\Usuario\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -20,7 +20,7 @@ class UsuarioRepository extends ServiceEntityRepository
         parent::__construct($registry, Usuario::class);
     }
 
-    public function criarUsuario(Usuario $usuario): void
+    public function persisteUsuario(Usuario $usuario): void
     {
         $entityManager = $this->getEntityManager();
         $entityManager->beginTransaction();
@@ -36,23 +36,7 @@ class UsuarioRepository extends ServiceEntityRepository
         } catch (\Exception $e) {
             $entityManager->rollback();
 
-            throw new \RuntimeException('Erro ao criar usuário: '.$e->getMessage(), 0, $e);
-        }
-    }
-
-    public function atualizarUsuario(Usuario $usuario): void
-    {
-        $entityManager = $this->getEntityManager();
-        $entityManager->beginTransaction();
-
-        try {
-            $entityManager->persist($usuario);
-            $entityManager->flush();
-            $entityManager->commit();
-        } catch (\Exception $e) {
-            $entityManager->rollback();
-
-            throw new \RuntimeException('Erro ao atualizar usuário: '.$e->getMessage(), 0, $e);
+            throw new \RuntimeException('Erro ao salvar usuário: ' . $e->getMessage(), 0, $e);
         }
     }
 }

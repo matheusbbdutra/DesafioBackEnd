@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Service;
+namespace App\Infrastructure\Service\Comum;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

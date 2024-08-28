@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Domain\Transacao\Services;
+namespace App\Infrastructure\Service\Transacao;
 
 use App\Application\DTO\Transacao\TransacaoDTO;
 use App\Domain\Transacao\Entity\Transacao;
 use App\Domain\Transacao\Enums\Status;
 use App\Domain\Transacao\Enums\TipoTransacao;
 use App\Domain\Usuario\Entity\Usuario;
-use App\Domain\Usuario\Repository\UsuarioRepository;
-use App\Infrastructure\Service\ClientService;
-use App\Infrastructure\Service\MessageService;
+use App\Infrastructure\Repository\Usuario\UsuarioRepository;
+use App\Infrastructure\Service\Comum\ClientService;
+use App\Infrastructure\Service\Comum\MessageService;
 use Doctrine\ORM\EntityManagerInterface;
 
 class TransacaoService
@@ -51,8 +51,15 @@ class TransacaoService
         } catch (\Exception $e) {
             $this->entityManager->rollback();
 
-            $this->criarTransacao($remetente, null, $transacaoDTO->valor, Status::Falhou, TipoTransacao::Deposito);
-            throw new \RuntimeException('Erro ao realizar o deposito: '.$e->getMessage(), 0, $e);
+            $this->criarTransacao(
+                $remetente,
+                null,
+                $transacaoDTO->valor,
+                Status::Falhou,
+                TipoTransacao::Deposito
+            );
+
+            throw new \RuntimeException('Erro ao realizar o deposito: ' . $e->getMessage(), 0, $e);
         }
     }
 
@@ -82,8 +89,15 @@ class TransacaoService
             $remetente = $this->getUsuario($transacaoDTO->cpfCnpjRemetente);
             $destinatario = $this->getUsuario($transacaoDTO->cpfCnpjDestinatario);
 
-            $this->criarTransacao($remetente, $destinatario, $transacaoDTO->valor, Status::Falhou, TipoTransacao::Transferencia);
-            throw new \RuntimeException('Erro ao realizar a transferência: '.$e->getMessage(), 0, $e);
+            $this->criarTransacao(
+                $remetente,
+                $destinatario,
+                $transacaoDTO->valor,
+                Status::Falhou,
+                TipoTransacao::Transferencia
+            );
+
+            throw new \RuntimeException('Erro ao realizar a transferência: ' . $e->getMessage(), 0, $e);
         }
     }
 

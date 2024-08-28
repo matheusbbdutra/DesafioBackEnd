@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Transacao\Repository;
+namespace App\Infrastructure\Repository\Transacao;
 
 use App\Domain\Transacao\Entity\Transacao;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
